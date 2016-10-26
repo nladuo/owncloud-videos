@@ -6,41 +6,48 @@ $(document).ready(function() {
 		var videos = JSON.parse(resp.data);
 		console.log(videos);
 
+        videos.forEach(function (video) {
+            var item = $('<div></div>');
+            item.attr('data-size',video.size);
+            item.attr('data-mime',video.mimetype);
+            item.attr('data-file',video.name);
+            item.attr('data-id',video.fileid);
+            item.attr('data-path',video.path);
 
-		for (var i = 0; i < videos.length; i++) {
-			var video = videos[i];
-
-            var row = $('<tr></tr>');
-            row.attr('data-size',video.size);
-            row.attr('data-mime',video.mimetype);
-            row.attr('data-file',video.name);
-            row.attr('data-id',video.fileid);
-            row.attr('data-path',video.path);
-
-            var cell = $('<td></td>');
-            cell.addClass('filename');
+            item.addClass('video-item');
 
             var link = $('<a href="#"></a>');
             link.attr('name', '/index.php/apps/files/download/'+video.path);
-            var iconUrl = "http://ubuntu" + video.icon;
-            link.html('<img class="thumb" src="'+iconUrl+'" />');
-            link.css('margin-left','10px');
-            link.addClass('viewVid');
-			link.click(function(){
-				videoViewer.onView(video.name, {
-					dir: video.dir,
-					$file: row
-				});
-			});
+            var thumbnail = OC.webroot + '/core/img/filetypes/video.svg';
+            link.html('<img id="video-'+video.fileid+'" class="thumb" src="'+thumbnail+'" />');
+            link.click(function(){
+                videoViewer.onView(video.name, {
+                    dir: video.dir,
+                    $file: item
+                });
+            });
+    
+            var data = {
+                fileid: video.fileid,
+                path: video.path
+            };
 
-            cell.append(link);
+            $.post(OC.generateUrl('/apps/videos/api/getThumbnail'), data).success(function (resp) {
+                if (resp.success) {
+                    var thumbnail = OC.webroot + resp.path;
+                    $('#video-' + video.fileid).attr('src', thumbnail);
+                }
+            });
 
-            cell.append('<br/><span class="fileName">'+video.name+'</span>');
-            row.append(cell);
+            // setTimeout(changeTumb(video.fileid), 1000);
 
-            $('#videos').append(row);
 
-		}
+            item.append(link);
+
+            item.append('<p class="videoName">'+video.name+'</p>');
+
+            $('#videos').append(item);
+        });
 		
 	});
 	

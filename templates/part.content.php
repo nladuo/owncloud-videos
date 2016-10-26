@@ -1,2 +1,3 @@
-<table id='videos' class="hascontrols">
-</table>
+<div id='videos' class="hascontrols">
+    
+</div>
