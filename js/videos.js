@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var modal;
+    var shade;
 
 	$.post(OC.generateUrl('/apps/videos/api/getVideos')).success(function (resp) {
 
@@ -15,14 +15,14 @@ $(document).ready(function() {
             item.attr('data-path',video.path);
             item.addClass('video-item');
 
-            modal = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="../../../core/img/actions/vedio-play.png"/></div>');
-            modal.addClass('modal');
+            shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="../../../core/img/actions/vedio-play.png"/></div>');
+            shade.addClass('shade');
 
             var link = $('<a href="#" style="margin: 0 auto"></a>');
             link.attr('name', '/index.php/apps/files/download/'+video.path);
             var thumbnail = OC.webroot + '/core/img/filetypes/video.svg';
             link.html('<img id="video-'+video.fileid+'" class="thumb" src="'+thumbnail+'" />');
-            modal.click(function(){
+            shade.click(function() {
                 videoViewer.onView(video.name, {
                     dir: video.dir,
                     $file: item
@@ -41,45 +41,47 @@ $(document).ready(function() {
                 }
             });
 
-            item.append(modal);
-
+            item.append(shade);
             item.append(link);
             item.append('<p class="videoName">'+video.name+'</p>');
 
             $('#videos').append(item);
 
-
-
-
         });
 
 
-        //设置遮罩层宽度
-        var _width=$('.thumb').css('width');
-        $('.modal').css("width",_width);
+        //set the width of shade
+        function setwidth() {
+            var _width = $('.thumb').css('width');
+            $('.shade').css("width", _width);
+        }
 
-        //鼠标移入
+        setwidth();
+        $(window).resize(setwidth); //
+
+        //mouse enter the video-item
         $('.video-item a img').mouseenter(function () {
-            $('.modal').hide();
-            $(this).parent().parent().find('.modal').show();
+            $('.shade').hide();
+            $(this).parent().parent().find('.shade').show();
         });
 
-        //鼠标移出
-        $('.modal').mouseleave(function () {
-            $('.modal').hide();
+        //mouse leave the video-item
+        $('.shade').mouseleave(function () {
+            $('.shade').hide();
         });
 
-
-        $('.modal img').mouseenter(function () {
+        $('.shade img').mouseenter(function () {
             $(this).parent().css("opacity","0.4")
         });
-        $('.modal img').mouseleave(function () {
+        $('.shade img').mouseleave(function () {
             $(this).parent().css("opacity","0.2")
         });
 		
 	});
-
-
+    
 
 });
+
+
+
 
