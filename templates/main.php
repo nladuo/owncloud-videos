@@ -1,6 +1,7 @@
 <?php
-script('videos', 'script');
-style('videos', 'style');
+script('files_videoplayer', 'viewer');
+script('videos', 'videos');
+style('videos', 'style')
 ?>
 
 <div id="app">

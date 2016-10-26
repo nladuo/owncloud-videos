@@ -19,7 +19,7 @@
  */
 return [
     'routes' => [
-	   ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-	   ['name' => 'page#do_echo', 'url' => '/echo', 'verb' => 'POST'],
+	   	['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+	   	['name' => 'api#get_videos', 'url' => '/api/getVideos', 'verb' => 'POST'],
     ]
 ];
