@@ -1,5 +1,5 @@
 # owncloud-videos
-An ownCloud videos app. 
+An [ownCloud](https://owncloud.org/) videos app. 
 
 ## Dependency
 1. [files_videoplayer](https://github.com/owncloud/files_videoplayer) <br>
