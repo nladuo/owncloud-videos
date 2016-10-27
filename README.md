@@ -7,9 +7,9 @@ An [ownCloud](https://owncloud.org/) videos app.
 
 ## Installation
 ```
-cd owncloud/apps    # enter the ownCloud apps directory
+cd owncloud/apps 
 git clone https://github.com/nladuo/owncloud-videos.git ./videos/
-chown www-data:www-data -R videos/thumbnails      # make sure the webserver can modify the thumbnails directory.
+chown www-data:www-data -R videos/thumbnails 
 ```
 
 ## ScreenShot
