@@ -5,7 +5,9 @@ $(document).ready(function() {
 
 		var videos = JSON.parse(resp.data);
 		console.log(videos);
-
+        if (videos.length == 0) {
+            $('#emptycontent').css('display', 'block');
+        }
         videos.forEach(function (video) {
             var item = $('<div></div>');
             item.attr('data-size',video.size);
@@ -78,7 +80,8 @@ $(document).ready(function() {
         });
 		
 	});
-    
+
+
 
 });
 

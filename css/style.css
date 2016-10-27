@@ -60,3 +60,8 @@
         margin: 0 1.6%;
     }
 }
+
+
+.icon-videos {
+    background-image: url('../img/videos_dark.svg');
+}

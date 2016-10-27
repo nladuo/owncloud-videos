@@ -1,7 +1,5 @@
 # owncloud-videos
 An ownCloud videos app. 
-## Status
-developing...
 
 ## Dependency
 1. [files_videoplayer](https://github.com/owncloud/files_videoplayer) <br>
@@ -14,8 +12,8 @@ git clone https://github.com/nladuo/owncloud-videos.git ./videos/
 chown www-data:www-data -R videos/thumbnails
 ```
 
-## ScreenShots
-...
+## ScreenShot
+![ScreenShot](./screenshot.png)
 
 ## LICENSE
 MIT
