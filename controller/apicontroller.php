@@ -1,9 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kalen
- * Date: 10/11/16
- * Time: 5:04 PM
+ * ownCloud - videos
+ *
+ * @author kalen blue <kalen25115@gmail.com>
+ * @copyright kalen blue 2016
  */
 namespace OCA\Videos\Controller;
 
@@ -52,7 +52,7 @@ class ApiController extends Controller {
 		usort($data, function($a, $b){
 			return @$b['mtime']-@$a['mtime'];
 		});
-
+		
 		return new DataResponse(['data' => json_encode($data)]);
 	}
 

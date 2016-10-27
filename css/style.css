@@ -5,11 +5,6 @@
     margin: 20px auto;
     max-width: 1050px;
     zoom: 1;
-
-    /*display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;*/
 }
 #videos:after{
     content: " ";
@@ -19,7 +14,6 @@
 }
 
 .video-item {
-    /*flex-grow:0;*/
     float: left;
     width: 23%;
     height:260px;
@@ -48,6 +42,10 @@
     z-index: 10;
 }
 
+.icon-videos {
+    background-image: url('../img/videos_dark.svg');
+}
+
 @media screen and (max-width: 500px){
     .video-item{
         width: 90%;
@@ -59,9 +57,4 @@
         width: 30%;
         margin: 0 1.6%;
     }
-}
-
-
-.icon-videos {
-    background-image: url('../img/videos_dark.svg');
 }

@@ -2,10 +2,7 @@
 /**
  * ownCloud - videos
  *
- * This file is licensed under the Affero General Public License version 3 or
- * later. See the COPYING file.
- *
- * @author kalen blue <1078239741@qq.com>
+ * @author kalen blue <kalen25115@gmail.com>
  * @copyright kalen blue 2016
  */
 
