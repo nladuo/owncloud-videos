@@ -19,7 +19,7 @@ $(document).ready(function() {
                 item.attr('data-path',video.path);
                 item.addClass('video-item');
 
-                shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="../../../core/img/actions/vedio-play.png"/></div>');
+                shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="../img/vedio-play.png"/></div>');
                 shade.addClass('shade');
 
                 var link = $('<a href="#" style="margin: 0 auto"></a>');
