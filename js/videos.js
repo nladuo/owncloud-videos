@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        type: "post",
+        type: "GET",
         url: OC.generateUrl('/apps/videos/api/getVideos'),
         success: function (data) {
             var shade;
@@ -41,7 +41,7 @@ $(document).ready(function() {
                 };
 
                 //get the thumbnail of the video
-                $.post(OC.generateUrl('/apps/videos/api/getThumbnail'), data).success(function (resp) {
+                $.getJSON(OC.generateUrl('/apps/videos/api/getThumbnail'), data, function (resp) {
                     if (resp.success) {
                         var thumbnail = OC.webroot + resp.path;
                         $('#video-' + video.fileid).attr('src', thumbnail);
