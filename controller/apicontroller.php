@@ -22,6 +22,7 @@ class ApiController extends Controller {
 	}
 
 	/**
+	 * @NoAdminRequired
 	 * @return DataResponse
 	 */
 	public function getVideos() {
@@ -57,6 +58,12 @@ class ApiController extends Controller {
 	}
 
 
+	/**
+	 * @NoAdminRequired
+	 * @param $fileid
+	 * @param $path
+	 * @return array
+	 */
 	public function getThumbnail($fileid, $path) {
 
 		$this->generateThumbnail($fileid, $path);
