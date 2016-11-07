@@ -17,7 +17,7 @@
 return [
     'routes' => [
 	   	['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-	   	['name' => 'api#get_videos', 'url' => '/api/getVideos', 'verb' => 'GET'],
-	   	['name' => 'api#get_thumbnail', 'url' => '/api/getThumbnail', 'verb' => 'GET'],
+	   	['name' => 'api#getVideos', 'url' => '/api/get_videos', 'verb' => 'GET'],
+	   	['name' => 'api#getThumbnail', 'url' => '/api/get_thumbnail', 'verb' => 'GET'],
     ]
 ];

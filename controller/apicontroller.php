@@ -36,7 +36,7 @@ class ApiController extends Controller {
 			}
 		);
 
-		$data = array();
+		$data = [];
 		foreach ($list as $key=>$video) {
 			$fileData = $video->getData();
 			$data[$key]['fileid'] = $video->getId();
@@ -53,7 +53,7 @@ class ApiController extends Controller {
 			return @$b['mtime']-@$a['mtime'];
 		});
 		
-		return new DataResponse(['data' => json_encode($data)]);
+		return ['videos' => $data];
 	}
 
 
@@ -63,16 +63,16 @@ class ApiController extends Controller {
 		$png_path = \OC::$SERVERROOT.'/apps/videos/thumbnails/' . $this->userId. '-' . $fileid . '.png';
 		if (file_exists($png_path)) {
 			$path = '/apps/videos/thumbnails/' . $this->userId. '-' . $fileid . '.png';
-			return new DataResponse([
+			return [
 				'success' => true,
 				'path' => $path
-			]);
-		} else {
-			return new DataResponse([
-				'success' => false,
-				'path' => '/core/img/filetypes/video.svg'
-			]);
+			];
 		}
+
+		return [
+			'success' => false,
+			'path' => '/core/img/filetypes/video.svg'
+		];
 	}
 
 

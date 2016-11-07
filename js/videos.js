@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: OC.generateUrl('/apps/videos/api/getVideos'),
+        url: OC.generateUrl('/apps/videos/api/get_videos'),
         success: function (data) {
             var shade;
-            var videos = JSON.parse(data.data);
+            var videos = data.videos;
             console.log(videos);
             if (videos.length == 0) {
                 $('#emptycontent').css('display', 'block');
@@ -41,7 +41,7 @@ $(document).ready(function() {
                 };
 
                 //get the thumbnail of the video
-                $.getJSON(OC.generateUrl('/apps/videos/api/getThumbnail'), data, function (resp) {
+                $.getJSON(OC.generateUrl('/apps/videos/api/get_thumbnail'), data, function (resp) {
                     if (resp.success) {
                         var thumbnail = OC.webroot + resp.path;
                         $('#video-' + video.fileid).attr('src', thumbnail);
@@ -93,9 +93,4 @@ $(document).ready(function() {
         }
     });
 
-
 });
-
-
-
-
