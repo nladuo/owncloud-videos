@@ -22,9 +22,5 @@ chown www-data:www-data -R videos/thumbnails
 ## ScreenShot
 ![ScreenShot](./screenshot.png)
 
-## TODO
-- [ ] 1. notification of unsupported mime-type.
-
-
 ## LICENSE
 MIT

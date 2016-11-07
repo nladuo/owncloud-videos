@@ -3,7 +3,6 @@ $(document).ready(function() {
         type: "GET",
         url: OC.generateUrl('/apps/videos/api/get_videos'),
         success: function (data) {
-            var shade;
             var videos = data.videos;
             console.log(videos);
             if (videos.length == 0) {
@@ -19,21 +18,34 @@ $(document).ready(function() {
                 item.attr('data-path',video.path);
                 item.addClass('video-item');
 
-                var shade_src = OC.webroot + '/apps/videos/img/video-play.png';
-                shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="'
-                    + shade_src + '"/></div>');
+
+                var shade, shade_src;
+
+                // if the mimetype is not supported
+                if (videoViewer.mimeTypes.indexOf(video.mimetype) == -1) {
+                    shade_src = OC.webroot + '/apps/videos/img/video-download.png';
+                    shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="'
+                        + shade_src + '"/></div>');
+                    shade.click(function () {
+                        window.open (OC.webroot + '/index.php/apps/files/download/'+video.path)
+                    });
+                } else {
+                    // if the mimetype is supported, trigger `file_videoplayer`
+                    shade_src = OC.webroot + '/apps/videos/img/video-play.png';
+                    shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="'
+                        + shade_src + '"/></div>');
+                    shade.click(function() {
+                        videoViewer.onView(video.name, {
+                            dir: video.dir,
+                            $file: item
+                        });
+                    });
+                }
                 shade.addClass('shade');
 
                 var link = $('<a href="#" style="margin: 0 auto"></a>');
-                link.attr('name', '/index.php/apps/files/download/'+video.path);
                 var thumbnail = OC.webroot + '/core/img/filetypes/video.svg';
                 link.html('<img id="video-'+video.fileid+'" class="thumb" src="'+thumbnail+'" />');
-                shade.click(function() {
-                    videoViewer.onView(video.name, {
-                        dir: video.dir,
-                        $file: item
-                    });
-                });
 
                 var data = {
                     fileid: video.fileid,
