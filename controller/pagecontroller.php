@@ -38,11 +38,4 @@ class PageController extends Controller {
 		return new TemplateResponse('videos', 'main', $params);  // templates/main.php
 	}
 
-	/**
-	 * @return string
-	 */
-	public function listAll() {
-		return $this->appName;
-	}
-
 }

@@ -20,10 +20,11 @@ class ApiController extends Controller {
 		parent::__construct($AppName, $request);
 		$this->userId = $UserId;
 	}
-
+	
 	/**
 	 * @NoAdminRequired
-	 * @return DataResponse
+	 * @NoCSRFRequired
+	 * @return array
 	 */
 	public function getVideos() {
 		$videos = \OCP\Files::searchByMime('video');
@@ -60,6 +61,7 @@ class ApiController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @param $fileid
 	 * @param $path
 	 * @return array
