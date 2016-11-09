@@ -20,7 +20,7 @@ class ApiController extends Controller {
 		parent::__construct($AppName, $request);
 		$this->userId = $UserId;
 	}
-	
+
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
