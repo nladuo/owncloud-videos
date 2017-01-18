@@ -6,17 +6,30 @@ An [ownCloud](https://owncloud.org/) videos app.
 2. [ffmpeg](http://ffmpeg.org/)
 
 ## Installation
-1. enter apps directory
+1. enter ownCloud directory
 ```
-cd owncloud/apps 
+cd owncloud
 ```
 2. clone the repository
 ```
-git clone https://github.com/nladuo/owncloud-videos.git ./videos/
+git clone https://github.com/nladuo/owncloud-videos.git .apps/videos/
 ```
-3. make the `videos/thumbnails` directory can be written.
-```
-chown www-data:www-data -R videos/thumbnails 
+3. add enable_previews in your config/config.php
+``` php
+$CONFIG = array (
+  'enable_previews' => true,
+  'enabledPreviewProviders' => array(
+        'OC\Preview\PNG',
+        'OC\Preview\JPEG',
+        'OC\Preview\GIF',
+        'OC\Preview\BMP',
+        'OC\Preview\XBitmap',
+        'OC\Preview\MP3',
+        'OC\Preview\TXT',
+        'OC\Preview\MarkDown',
+        'OC\Preview\Movie'
+  )
+);
 ```
 
 ## ScreenShot

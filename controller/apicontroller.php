@@ -57,48 +57,5 @@ class ApiController extends Controller {
 		
 		return ['videos' => $data];
 	}
-
-
-	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 * @param $fileid
-	 * @param $path
-	 * @return array
-	 */
-	public function getThumbnail($fileid, $path) {
-
-		$this->generateThumbnail($fileid, $path);
-		$png_path = \OC::$SERVERROOT.'/apps/videos/thumbnails/' . $this->userId. '-' . $fileid . '.png';
-		if (file_exists($png_path)) {
-			$path = '/apps/videos/thumbnails/' . $this->userId. '-' . $fileid . '.png';
-			return [
-				'success' => true,
-				'path' => $path
-			];
-		}
-
-		return [
-			'success' => false,
-			'path' => '/core/img/filetypes/video.svg'
-		];
-	}
-
-
-	private function generateThumbnail($fileid, $path) {
-
-		$config = new \OC\Config(\OC::$configDir);
-		$datadirectory = $config->getValue('datadirectory', '');
-		$video_path = $datadirectory . '/' . $this->userId .'/files'. $path;
-		$png_path = \OC::$SERVERROOT.'/apps/videos/thumbnails/' . $this->userId. '-' . $fileid . '.png';
-
-		// if the thumb exist and return
-		if(file_exists($png_path)){
-			return;
-		}
-
-		$exe = 'ffmpeg -y -ss 5 -i "' . $video_path
-			. '" -vcodec png -vframes 1 -an -f rawvideo -vf scale=320:-1 "'.$png_path.'"';
-		@shell_exec($exe);
-	}
+	
 }

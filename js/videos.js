@@ -27,7 +27,7 @@ $(document).ready(function() {
                     shade = $('<div><img style="width: 60px;margin: 40px auto 0 auto;cursor: pointer" src="'
                         + shade_src + '"/></div>');
                     shade.click(function () {
-                        window.open (OC.webroot + '/index.php/apps/files/download/'+video.path)
+                        window.open (OC.generateUrl('/apps/files/download/') + video.path)
                     });
                 } else {
                     // if the mimetype is supported, trigger `file_videoplayer`
@@ -44,21 +44,8 @@ $(document).ready(function() {
                 shade.addClass('shade');
 
                 var link = $('<a href="#" style="margin: 0 auto"></a>');
-                var thumbnail = OC.webroot + '/core/img/filetypes/video.svg';
+                var thumbnail = OC.generateUrl('/core/preview.png?file='+ encodeURI(video.path) +'&x=400&y=300&a=true&scalingup=0');
                 link.html('<img id="video-'+video.fileid+'" class="thumb" src="'+thumbnail+'" />');
-
-                var data = {
-                    fileid: video.fileid,
-                    path: video.path
-                };
-
-                //get the thumbnail of the video
-                $.getJSON(OC.generateUrl('/apps/videos/api/get_thumbnail'), data, function (resp) {
-                    if (resp.success) {
-                        var thumbnail = OC.webroot + resp.path;
-                        $('#video-' + video.fileid).attr('src', thumbnail);
-                    }
-                });
 
                 item.append(shade);
                 item.append(link);
