@@ -31,7 +31,6 @@ $CONFIG = array (
   )
 );
 ```
-
 ## ScreenShot
 ![ScreenShot](./screenshot.png)
 
