@@ -7,14 +7,19 @@ An [ownCloud](https://owncloud.org/) videos app.
 
 ## Installation
 1. enter ownCloud directory
+
   ```
   cd owncloud
   ```
+  
 2. clone the repository
+
   ```
   git clone https://github.com/nladuo/owncloud-videos.git .apps/videos/
   ```
+
 3. add enable_previews in your config/config.php
+
   ``` php
   $CONFIG = array (
     'enable_previews' => true,
@@ -31,6 +36,7 @@ An [ownCloud](https://owncloud.org/) videos app.
     )
   );
   ```
+
 ## ScreenShot
 ![ScreenShot](./screenshot.png)
 
