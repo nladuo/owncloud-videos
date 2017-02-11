@@ -15,7 +15,7 @@ An [ownCloud](https://owncloud.org/) videos app.
 2. clone the repository
 
   ```
-  git clone https://github.com/nladuo/owncloud-videos.git .apps/videos/
+  git clone https://github.com/nladuo/owncloud-videos.git ./apps/videos/
   ```
 
 3. add enable_previews in your config/config.php
